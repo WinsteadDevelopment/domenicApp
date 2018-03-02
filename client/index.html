@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Page Title</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+  <script src="main.js"></script>
+  <style>
+    .nonselectable {
+      -webkit-user-select: none;
+      -khtml-user-drag: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -moz-user-select: -moz-none;
+      -ms-user-select: none;
+      user-select: none
+    }
+  
+    .selectable {
+      -webkit-user-select: auto;
+      -khtml-user-drag: auto;
+      -khtml-user-select: auto;
+      -moz-user-select: auto;
+      -ms-user-select: auto;
+      user-select: auto
+    }
+  </style>
+  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script>
+    $('html').addClass('nonselectable');
+    $.fn.ready(function () { var b = $(".nonselectable"), c = $(".selectable"); b.on("dragstart, selectstart", function (a) { a.preventDefault() }); c.on("dragstart, selectstart", function (a) { a.stopPropagation() }); b.find("*").andSelf().attr("unselectable", "on"); c.find("*").andSelf().removeAttr("unselectable") });
+  </script>
+</head>
+<body oncopy="return false" oncut="return false" onpaste="return false">
+  <p>This can't be copied and pasted</p>
+  <h3>Here's some super cool shit about how to make a thing!</h3>
+  <p>You can't copy it though</p>
+</body>
+</html>
